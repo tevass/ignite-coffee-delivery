@@ -31,11 +31,11 @@ export const defaultTheme = {
       text: 'Roboto',
     },
     titles: {
-      xl: '3rem Baloo2 900 1.3',
-      lg: '2rem Baloo2 900 1.3',
-      md: '1.5rem Baloo2 900 1.3',
-      sm: '1.25rem Baloo2 bold 1.3',
-      xs: '1.125rem Baloo2 bold 1.3',
+      xl: '800 normal 3rem/1.3 Baloo 2',
+      lg: '800 normal 2rem/1.3 Baloo 2',
+      md: '800 normal 1.5rem/1.3 Baloo 2',
+      sm: 'bold normal 1.25rem/1.3 Baloo 2',
+      xs: 'bold normal 1.125rem/1.3 Baloo 2',
     },
     text: {
       lg: {
@@ -47,17 +47,17 @@ export const defaultTheme = {
         bold: '1rem Roboto bold 1.3',
       },
       sm: {
-        regular: '0.875rem Roboto regular 1.3',
-        bold: '0.875rem Roboto bold 1.3',
+        regular: 'regular normal 0.875rem/1.3 Roboto',
+        bold: 'bold normal 0.875rem/1.3 Roboto',
       },
     },
     components: {
       tag: {
-        bold: '0.625rem Roboto bold 1.3',
+        bold: 'bold normal 0.625rem/1.3 Roboto',
       },
       button: {
-        lg: '0.875rem Roboto bold 1.6',
-        sm: '0.75rem Roboto regular 1.6',
+        lg: 'bold normal 0.875rem/1.6 Roboto',
+        sm: 'bold normal 0.75rem/1.6 Roboto',
       },
     },
   },
