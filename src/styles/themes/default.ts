@@ -31,23 +31,23 @@ export const defaultTheme = {
       text: 'Roboto',
     },
     titles: {
-      xl: '800 normal 3rem/1.3 Baloo 2',
-      lg: '800 normal 2rem/1.3 Baloo 2',
-      md: '800 normal 1.5rem/1.3 Baloo 2',
-      sm: 'bold normal 1.25rem/1.3 Baloo 2',
-      xs: 'bold normal 1.125rem/1.3 Baloo 2',
+      xl: '800 normal 3rem/1.3 "Baloo 2"',
+      lg: '800 normal 2rem/1.3 "Baloo 2"',
+      md: '800 normal 1.5rem/1.3 "Baloo 2"',
+      sm: 'bold normal 1.25rem/1.3 "Baloo 2"',
+      xs: 'bold normal 1.125rem/1.3 "Baloo 2"',
     },
     text: {
       lg: {
-        regular: '1.25rem Roboto regular 1.3',
-        bold: '1.25rem Roboto bold 1.3',
+        regular: '400 normal 1.25rem/1.3 Roboto',
+        bold: 'bold normal 1.25rem/1.3 Roboto',
       },
       md: {
-        regular: '1rem Roboto regular 1.3',
-        bold: '1rem Roboto bold 1.3',
+        regular: '400 normal 1rem/1.3 Roboto',
+        bold: 'bold normal 1rem/1.3 Roboto',
       },
       sm: {
-        regular: 'regular normal 0.875rem/1.3 Roboto',
+        regular: '400 normal 0.875rem/1.3 Roboto',
         bold: 'bold normal 0.875rem/1.3 Roboto',
       },
     },

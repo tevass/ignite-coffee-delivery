@@ -19,12 +19,16 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body, input, textarea, button {
-    font-family: 'Roboto', sans-serif;
+    font-family:  ${(props) => props.theme.fonts.family.text}, sans-serif;
     font-weight: 400;
     font-size: 1rem;
   }
 
   a {
     text-decoration: none;
+  }
+
+  h1, h2, h3 {
+    font-family: ${(props) => props.theme.fonts.family.header}, sans-serif;
   }
 `
