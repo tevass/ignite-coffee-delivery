@@ -52,9 +52,7 @@ export const defaultTheme = {
       },
     },
     components: {
-      tag: {
-        bold: 'bold normal 0.625rem/1.3 Roboto',
-      },
+      tag: 'bold normal 0.75rem/1.3 Roboto',
       button: {
         lg: 'bold normal 0.875rem/1.6 Roboto',
         sm: 'bold normal 0.75rem/1.6 Roboto',

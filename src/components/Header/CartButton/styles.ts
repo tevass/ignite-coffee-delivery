@@ -30,10 +30,6 @@ export const CartCounter = styled.div`
 
   border-radius: 999px;
 
-  /* span {
-    margin-top: 2px;
-  } */
-
   position: absolute;
   top: -7px;
   right: -7px;

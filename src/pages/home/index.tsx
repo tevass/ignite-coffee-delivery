@@ -1,4 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { CoffeeCard } from './components/CoffeCard'
 import { Icon } from './components/Icon'
 import {
   HomeContainer,
@@ -57,6 +58,8 @@ export function Home() {
 
         <img src="/coffee.png" alt="Copo de café" />
       </HomeIntroContainer>
+
+      <CoffeeCard />
     </HomeContainer>
   )
 }
