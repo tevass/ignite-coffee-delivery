@@ -10,6 +10,8 @@ export const HomeIntroContainer = styled.section`
   justify-content: space-between;
 
   gap: 2rem;
+
+  padding-bottom: 8rem;
 `
 
 export const HomeTitle = styled.div`
@@ -46,4 +48,21 @@ export const HomeItem = styled.div`
   & + & {
     margin-top: 1rem;
   }
+`
+
+export const CoffeeSection = styled.div`
+  padding-top: 1rem;
+
+  > h4 {
+    font: ${(props) => props.theme.fonts.titles.lg};
+    color: ${(props) => props.theme.colors.base.subtitle};
+    margin-bottom: 3.375rem;
+  }
+`
+
+export const CoffeesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 256px);
+  column-gap: 1rem;
+  row-gap: 2.5rem;
 `

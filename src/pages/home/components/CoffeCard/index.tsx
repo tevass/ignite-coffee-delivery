@@ -12,27 +12,48 @@ import {
   CoffeeCartButton,
 } from './styles'
 
-export function CoffeeCard() {
+interface Coffee {
+  id: number
+  name: string
+  description: string
+  price: number
+  tags: string[]
+  img: string
+}
+
+interface CoffeeCardProps {
+  coffee: Coffee
+}
+
+export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const price = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+    .format(coffee.price)
+    .split('R$')[1]
+
   return (
     <div>
       <CoffeeCardContainer>
         <CoffeeCardContainerImg>
-          <img src="/americano.png" alt="" />
+          <img src={coffee.img} alt={coffee.name} />
         </CoffeeCardContainerImg>
 
         <CoffeeCardTagsContainer>
-          <CoffeeCardTag>TRADICIONAL</CoffeeCardTag>
-          <CoffeeCardTag>TRADICIONAL</CoffeeCardTag>
+          {coffee.tags.map((tag) => (
+            <CoffeeCardTag key={tag}>{tag}</CoffeeCardTag>
+          ))}
         </CoffeeCardTagsContainer>
 
         <CoffeeCardContent>
-          <h4>Expresso Tradicional</h4>
-          <p>O tradicional café feito com água quente e grãos moídos</p>
+          <h4>{coffee.name}</h4>
+          <p>{coffee.description}</p>
         </CoffeeCardContent>
 
         <CoffeeCardFooter>
           <p>
-            <span>R$</span> 9,90
+            <span>R$</span> {price}
           </p>
 
           <CoffeeCardFooterActions>

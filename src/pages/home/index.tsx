@@ -2,12 +2,27 @@ import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { CoffeeCard } from './components/CoffeCard'
 import { Icon } from './components/Icon'
 import {
+  CoffeesContainer,
+  CoffeeSection,
   HomeContainer,
   HomeIntroContainer,
   HomeItem,
   HomeItens,
   HomeTitle,
 } from './styles'
+
+import data from '../../../coffees.json'
+
+interface CoffeeType {
+  id: number
+  name: string
+  description: string
+  price: number
+  tags: string[]
+  img: string
+}
+
+const coffees = data as CoffeeType[]
 
 export function Home() {
   return (
@@ -59,7 +74,15 @@ export function Home() {
         <img src="/coffee.png" alt="Copo de café" />
       </HomeIntroContainer>
 
-      <CoffeeCard />
+      <CoffeeSection>
+        <h4>Nossos cafés</h4>
+
+        <CoffeesContainer>
+          {coffees.map((coffee) => (
+            <CoffeeCard key={coffee.id} coffee={coffee} />
+          ))}
+        </CoffeesContainer>
+      </CoffeeSection>
     </HomeContainer>
   )
 }
