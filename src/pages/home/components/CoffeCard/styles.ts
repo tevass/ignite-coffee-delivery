@@ -35,6 +35,8 @@ export const CoffeeCardTag = styled.span`
   color: ${(props) => props.theme.colors.brand.yellow.dark};
   font: ${(props) => props.theme.fonts.components.tag};
 
+  text-transform: uppercase;
+
   padding: 0.3rem 0.5rem;
   border-radius: 999px;
 

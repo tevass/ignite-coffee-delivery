@@ -7,7 +7,7 @@ export function CartButton() {
   const hasItensOnCart = false
 
   return (
-    <Link to="/">
+    <Link to="/checkout">
       <CartButtonContainer>
         <ShoppingCart size={22} weight="fill" />
 

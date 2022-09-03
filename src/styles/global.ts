@@ -31,4 +31,24 @@ export const GlobalStyles = createGlobalStyle`
   h1, h2, h3 {
     font-family: ${(props) => props.theme.fonts.family.header}, sans-serif;
   }
+
+  input {
+    height: 2.625rem;
+    background: ${(props) => props.theme.colors.base.input};
+
+    border: 1px solid ${(props) => props.theme.colors.base.button};
+    border-radius: 4px;
+    padding: 0.75rem;
+
+    font: ${(props) => props.theme.fonts.text.sm.regular};
+    color: ${(props) => props.theme.colors.base.text};
+    
+    ::placeholder, :-ms-input-placeholder, ::-ms-input-placeholder  {
+      color: ${(props) => props.theme.colors.base.label};
+    }
+
+    &:focus, &:focus-visible, &:focus-within {
+      outline-color: ${(props) => props.theme.colors.brand.yellow.dark};
+    }
+  }
 `
