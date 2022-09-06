@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const CheckoutContainer = styled.main`
   display: grid;
   grid-template-columns: 8fr 4fr;
-  column-gap: 1rem;
+  column-gap: 2rem;
 
   padding: 2rem 0;
 
@@ -60,4 +60,39 @@ export const WrapperHeaderContent = styled.div`
 export const InputGroup = styled.div`
   display: flex;
   gap: 0.75rem;
+`
+
+export const ResumeContainer = styled.div`
+  padding: 2rem;
+  background: ${(props) => props.theme.colors.base.card};
+  border-radius: 6px 44px 6px 44px;
+`
+
+export const ResumeContent = styled.div`
+  padding-top: 1.5rem;
+  border-top: 1px solid ${(props) => props.theme.colors.base.button};
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      font: ${(props) => props.theme.fonts.text.sm.regular};
+      color: ${(props) => props.theme.colors.base.text};
+    }
+
+    span.currency {
+      font: ${(props) => props.theme.fonts.text.md.regular};
+    }
+
+    &.total span {
+      font: ${(props) => props.theme.fonts.text.lg.bold};
+      color: ${(props) => props.theme.colors.base.subtitle};
+    }
+
+    & + div {
+      margin-top: 0.75rem;
+    }
+  }
 `

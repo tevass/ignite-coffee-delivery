@@ -11,6 +11,8 @@ import { InputWrapper } from './Input/styles'
 import {
   CheckoutContainer,
   InputGroup,
+  ResumeContainer,
+  ResumeContent,
   WrapperHeader,
   WrapperHeaderContent,
   WrapperOrder,
@@ -95,7 +97,25 @@ export function Checkout() {
         </WrapperOrder>
       </div>
 
-      <div></div>
+      <div>
+        <h4>Cafés selecionados</h4>
+        <ResumeContainer>
+          <ResumeContent>
+            <div>
+              <span>Total de itens</span>
+              <span className="currency">R$ 29,70</span>
+            </div>
+            <div>
+              <span>Entrega</span>
+              <span className="currency">R$ 3,50</span>
+            </div>
+            <div className="total">
+              <span>Total</span>
+              <span>R$ 33,20</span>
+            </div>
+          </ResumeContent>
+        </ResumeContainer>
+      </div>
     </CheckoutContainer>
   )
 }
