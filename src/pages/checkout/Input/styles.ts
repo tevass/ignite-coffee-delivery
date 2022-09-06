@@ -15,6 +15,7 @@ export const InputWrapper = styled.div<InputWrapperProps>`
 `
 
 export const InputContainer = styled.div`
+  width: 100%;
   position: relative;
   height: 2.625rem;
 

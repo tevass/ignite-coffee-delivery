@@ -56,3 +56,8 @@ export const WrapperHeaderContent = styled.div`
     color: ${(props) => props.theme.colors.base.subtitle};
   }
 `
+
+export const InputGroup = styled.div`
+  display: flex;
+  gap: 0.75rem;
+`
