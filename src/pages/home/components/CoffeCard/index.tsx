@@ -1,5 +1,6 @@
 import { ShoppingCart } from 'phosphor-react'
-import { Counter } from './Counter'
+import { useState } from 'react'
+import { CounterButton } from '../../../../components/CounterButton'
 
 import {
   CoffeeCardContainer,
@@ -26,6 +27,16 @@ interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const [amount, setAmount] = useState(1)
+
+  const handleIncrement = () => {
+    if (amount < 3) setAmount((prev) => prev + 1)
+  }
+
+  const handleDecrement = () => {
+    if (amount > 1) setAmount((prev) => prev - 1)
+  }
+
   const price = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -57,7 +68,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
           </p>
 
           <CoffeeCardFooterActions>
-            <Counter />
+            <CounterButton
+              amount={amount}
+              onDecrement={handleDecrement}
+              onIncrement={handleIncrement}
+            />
             <CoffeeCartButton>
               <ShoppingCart size={22} weight="fill" />
             </CoffeeCartButton>

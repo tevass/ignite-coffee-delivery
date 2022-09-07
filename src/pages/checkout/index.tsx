@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { CoffeeItem } from './CoffeItem'
 import { Input } from './Input'
 import { Radio } from './Input/Radio'
 import { InputWrapper } from './Input/styles'
@@ -13,6 +14,7 @@ import {
   InputGroup,
   ResumeContainer,
   ResumeContent,
+  SubmitOrder,
   WrapperHeader,
   WrapperHeaderContent,
   WrapperOrder,
@@ -100,6 +102,10 @@ export function Checkout() {
       <div>
         <h4>Cafés selecionados</h4>
         <ResumeContainer>
+          <div>
+            <CoffeeItem />
+            <CoffeeItem />
+          </div>
           <ResumeContent>
             <div>
               <span>Total de itens</span>
@@ -114,6 +120,7 @@ export function Checkout() {
               <span>R$ 33,20</span>
             </div>
           </ResumeContent>
+          <SubmitOrder>confirmar pedido</SubmitOrder>
         </ResumeContainer>
       </div>
     </CheckoutContainer>

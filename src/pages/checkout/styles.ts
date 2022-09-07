@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CheckoutContainer = styled.main`
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: 8fr 5fr;
   column-gap: 2rem;
 
   padding: 2rem 0;
@@ -94,5 +94,26 @@ export const ResumeContent = styled.div`
     & + div {
       margin-top: 0.75rem;
     }
+  }
+`
+
+export const SubmitOrder = styled.button`
+  margin-top: 2.5rem;
+  border: none;
+  text-align: center;
+  width: 100%;
+
+  background: ${(props) => props.theme.colors.brand.yellow.normal};
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+
+  font: ${(props) => props.theme.fonts.components.button.lg};
+  color: ${(props) => props.theme.colors.base.white};
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  &:hover {
+    background: ${(props) => props.theme.colors.brand.yellow.dark};
   }
 `

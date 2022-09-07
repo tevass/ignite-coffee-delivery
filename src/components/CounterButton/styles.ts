@@ -6,6 +6,7 @@ export const CounterContainer = styled.div`
   justify-content: center;
 
   height: 38px;
+  width: 72px;
   border-radius: 6px;
 
   background: ${(props) => props.theme.colors.base.button};
@@ -14,7 +15,7 @@ export const CounterContainer = styled.div`
   gap: 0.3rem;
 `
 
-export const CounterButton = styled.button`
+export const Button = styled.button`
   background: transparent;
   border: none;
 
