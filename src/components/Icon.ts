@@ -12,7 +12,7 @@ export const Icon = styled.div<IconProps>`
   align-items: center;
   justify-content: center;
 
-  width: 2rem;
-  height: 2rem;
-  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
 `

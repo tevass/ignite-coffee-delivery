@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { CoffeeCard } from './components/CoffeCard'
-import { Icon } from './components/Icon'
+import { Icon } from '../../components/Icon'
 import {
   CoffeesContainer,
   CoffeeSection,
