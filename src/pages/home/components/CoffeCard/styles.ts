@@ -1,6 +1,20 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const CoffeeCardContainer = styled.div`
+interface CoffeeCardContainerProps {
+  disabled?: boolean
+}
+
+const CoffeeCardContainerDisabled = css`
+  user-select: none;
+  opacity: 0.5;
+
+  &,
+  button {
+    cursor: not-allowed;
+  }
+`
+
+export const CoffeeCardContainer = styled.div<CoffeeCardContainerProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +24,8 @@ export const CoffeeCardContainer = styled.div`
   background: ${(props) => props.theme.colors.base.card};
 
   padding: 0 1rem 1rem;
+
+  ${(props) => props.disabled && CoffeeCardContainerDisabled}
 `
 
 export const CoffeeCardContainerImg = styled.div`
@@ -102,7 +118,7 @@ export const CoffeeCartButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  &:hover {
+  &:not(:disabled):hover {
     background: ${(props) => props.theme.colors.brand.purple.normal};
   }
 `

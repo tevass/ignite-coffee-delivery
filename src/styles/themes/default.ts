@@ -48,7 +48,7 @@ export const defaultTheme = {
       },
       sm: {
         regular: '400 normal 0.875rem/1.3 Roboto',
-        bold: 'bold normal 0.875rem/1.3 Roboto',
+        bold: 'bold normal 0.75rem/1.3 Roboto',
       },
     },
     components: {

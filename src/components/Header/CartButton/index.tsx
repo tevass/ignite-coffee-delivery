@@ -1,10 +1,12 @@
 import { ShoppingCart } from 'phosphor-react'
 import { Link } from 'react-router-dom'
+import { useCart } from '../../../hooks/useCart'
 
 import { CartButtonContainer, CartCounter } from './styles'
 
 export function CartButton() {
-  const hasItensOnCart = false
+  const { itens } = useCart()
+  const hasItensOnCart = !!itens.length
 
   return (
     <Link to="/checkout">
@@ -13,7 +15,7 @@ export function CartButton() {
 
         {hasItensOnCart && (
           <CartCounter>
-            <span>3</span>
+            <span>{itens.length}</span>
           </CartCounter>
         )}
       </CartButtonContainer>

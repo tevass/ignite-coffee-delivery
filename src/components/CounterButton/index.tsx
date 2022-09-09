@@ -6,20 +6,22 @@ interface CounterButtonProps {
   amount: number
   onIncrement?: () => void
   onDecrement?: () => void
+  disabled?: boolean
 }
 
 export function CounterButton({
   amount,
   onDecrement,
   onIncrement,
+  disabled,
 }: CounterButtonProps) {
   return (
     <CounterContainer>
-      <Button onClick={onDecrement}>
+      <Button onClick={onDecrement} disabled={disabled}>
         <Minus size={12} weight="bold" />
       </Button>
       <span>{amount}</span>
-      <Button onClick={onIncrement}>
+      <Button onClick={onIncrement} disabled={disabled}>
         <Plus size={12} weight="bold" />
       </Button>
     </CounterContainer>

@@ -21,8 +21,9 @@ export const CartCounter = styled.div`
   color: ${(props) => props.theme.colors.base.white};
   font: ${(props) => props.theme.fonts.text.sm.bold};
 
-  width: 20px;
-  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  padding: 2px 3px;
 
   display: flex;
   align-items: center;

@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { useCart } from '../../hooks/useCart'
 import { CoffeeItem } from './CoffeItem'
 import { Input } from './Input'
 import { Radio } from './Input/Radio'
@@ -21,6 +22,8 @@ import {
 } from './styles'
 
 export function Checkout() {
+  const { itens } = useCart()
+
   return (
     <CheckoutContainer>
       <div>
@@ -102,10 +105,15 @@ export function Checkout() {
       <div>
         <h4>Cafés selecionados</h4>
         <ResumeContainer>
-          <div>
-            <CoffeeItem />
-            <CoffeeItem />
-          </div>
+          {itens.length ? (
+            <div>
+              {itens.map((item) => (
+                <CoffeeItem item={item} key={item.id} />
+              ))}
+            </div>
+          ) : (
+            <p>Nenhum café adicionado</p>
+          )}
           <ResumeContent>
             <div>
               <span>Total de itens</span>

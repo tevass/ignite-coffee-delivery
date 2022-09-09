@@ -1,6 +1,8 @@
-import { ShoppingCart } from 'phosphor-react'
+import { Code, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 import { CounterButton } from '../../../../components/CounterButton'
+import { useCart } from '../../../../hooks/useCart'
+import { formatPrice } from '../../../../utils/formatPrice'
 
 import {
   CoffeeCardContainer,
@@ -28,6 +30,7 @@ interface CoffeeCardProps {
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
   const [amount, setAmount] = useState(1)
+  const { addNewItem, itens } = useCart()
 
   const handleIncrement = () => {
     if (amount < 3) setAmount((prev) => prev + 1)
@@ -37,16 +40,15 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
     if (amount > 1) setAmount((prev) => prev - 1)
   }
 
-  const price = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
-    .format(coffee.price)
-    .split('R$')[1]
+  const handleAddInCart = () => addNewItem({ ...coffee, amount })
+
+  const price = formatPrice(coffee.price).split('R$')[1]
+
+  const coffeeIsOnCart = !!itens.find((item) => item.id === coffee.id)
 
   return (
     <div>
-      <CoffeeCardContainer>
+      <CoffeeCardContainer disabled={coffeeIsOnCart}>
         <CoffeeCardContainerImg>
           <img src={coffee.img} alt={coffee.name} />
         </CoffeeCardContainerImg>
@@ -72,8 +74,12 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
               amount={amount}
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
+              disabled={coffeeIsOnCart}
             />
-            <CoffeeCartButton>
+            <CoffeeCartButton
+              onClick={handleAddInCart}
+              disabled={coffeeIsOnCart}
+            >
               <ShoppingCart size={22} weight="fill" />
             </CoffeeCartButton>
           </CoffeeCardFooterActions>

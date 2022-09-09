@@ -1,5 +1,6 @@
 import { Trash } from 'phosphor-react'
 import { CounterButton } from '../../../components/CounterButton'
+import { formatPrice } from '../../../utils/formatPrice'
 
 import {
   CoffeeItemContainer,
@@ -8,16 +9,32 @@ import {
   RemoveButton,
 } from './styles'
 
-export function CoffeeItem() {
+interface Item {
+  id: number
+  name: string
+  description: string
+  price: number
+  tags: string[]
+  img: string
+  amount: number
+}
+
+interface CoffeeItemProps {
+  item: Item
+}
+
+export function CoffeeItem({ item }: CoffeeItemProps) {
+  const price = formatPrice(item.price)
+
   return (
     <CoffeeItemContainer>
       <CoffeeItemImg>
-        <img src="/americano.png" alt="" />
+        <img src={item.img} alt={item.name} />
       </CoffeeItemImg>
       <CoffeeItemContent>
-        <span>Expresso Tradicional</span>
+        <span>{item.name}</span>
         <div>
-          <CounterButton amount={1} />
+          <CounterButton amount={item.amount} />
           <RemoveButton>
             <div>
               <Trash size={18} />
@@ -26,7 +43,7 @@ export function CoffeeItem() {
           </RemoveButton>
         </div>
       </CoffeeItemContent>
-      <span>R$ 9,90</span>
+      <span>{price}</span>
     </CoffeeItemContainer>
   )
 }
