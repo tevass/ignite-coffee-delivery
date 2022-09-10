@@ -6,7 +6,9 @@ import {
   Money,
 } from 'phosphor-react'
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { useCart } from '../../hooks/useCart'
+import { useOrder } from '../../hooks/useOrder'
 
 import { formatPrice } from '../../utils/formatPrice'
 
@@ -27,7 +29,7 @@ import {
   WrapperOrder,
 } from './styles'
 
-interface AddressFormData {
+interface OrderFormData {
   zip_code: string
   street: string
   number: string
@@ -39,9 +41,11 @@ interface AddressFormData {
 }
 
 export function Checkout() {
-  const { itens } = useCart()
+  const { itens, currencyOfDelivery } = useCart()
+  const { onFinishOrder } = useOrder()
+  const navigate = useNavigate()
 
-  const addressForm = useForm<AddressFormData>({
+  const addressForm = useForm<OrderFormData>({
     defaultValues: {
       city: '',
       complement: '',
@@ -56,16 +60,29 @@ export function Checkout() {
 
   const { handleSubmit } = addressForm
 
-  const handleSubmitAddress: SubmitHandler<AddressFormData> = (data) => {
-    console.log(data)
+  const handleSubmitAddress: SubmitHandler<OrderFormData> = ({
+    payment,
+    ...data
+  }) => {
+    const order: any = {
+      address: data,
+      payment,
+    }
+
+    onFinishOrder(order)
+    navigate('/success')
   }
 
   const totalPriceOfItens = itens.reduce(
     (value, item) => value + item.price * item.amount,
     0,
   )
-
   const currencyOfItens = formatPrice(totalPriceOfItens)
+
+  const hasItens = !!itens.length
+
+  const totalOfOrder = totalPriceOfItens + currencyOfDelivery.number
+  const currencyOfTotalOrder = formatPrice(totalOfOrder)
 
   return (
     <main>
@@ -86,21 +103,18 @@ export function Checkout() {
 
               <div>
                 <InputWrapper maxW={200}>
-                  <Input<AddressFormData>
-                    placeholder="CEP"
-                    formName="zip_code"
-                  />
+                  <Input<OrderFormData> placeholder="CEP" formName="zip_code" />
                 </InputWrapper>
                 <InputWrapper>
-                  <Input<AddressFormData> placeholder="Rua" formName="street" />
+                  <Input<OrderFormData> placeholder="Rua" formName="street" />
                 </InputWrapper>
                 <InputWrapper>
                   <InputGroup>
-                    <Input<AddressFormData>
+                    <Input<OrderFormData>
                       placeholder="Numero"
                       formName="number"
                     />
-                    <Input<AddressFormData>
+                    <Input<OrderFormData>
                       placeholder="Complemento"
                       isOptional
                       formName="complement"
@@ -109,19 +123,16 @@ export function Checkout() {
                 </InputWrapper>
                 <InputWrapper>
                   <InputGroup>
-                    <Input<AddressFormData>
+                    <Input<OrderFormData>
                       placeholder="Bairro"
                       formName="neighborhood"
                     />
-                    <Input<AddressFormData>
+                    <Input<OrderFormData>
                       placeholder="Cidade"
                       formName="city"
                     />
                     <InputWrapper maxW={60}>
-                      <Input<AddressFormData>
-                        placeholder="UF"
-                        formName="state"
-                      />
+                      <Input<OrderFormData> placeholder="UF" formName="state" />
                     </InputWrapper>
                   </InputGroup>
                 </InputWrapper>
@@ -144,7 +155,7 @@ export function Checkout() {
 
               <div>
                 <InputGroup>
-                  <Radio<AddressFormData>
+                  <Radio<OrderFormData>
                     id="credit"
                     value="credit"
                     formName="payment"
@@ -154,7 +165,7 @@ export function Checkout() {
                     </div>
                     <span>Cartão de crédito</span>
                   </Radio>
-                  <Radio<AddressFormData>
+                  <Radio<OrderFormData>
                     id="debit"
                     value="debit"
                     formName="payment"
@@ -164,7 +175,7 @@ export function Checkout() {
                     </div>
                     <span>cartão de débito</span>
                   </Radio>
-                  <Radio<AddressFormData>
+                  <Radio<OrderFormData>
                     id="money"
                     value="money"
                     formName="payment"
@@ -182,7 +193,7 @@ export function Checkout() {
           <div>
             <h4>Cafés selecionados</h4>
             <ResumeContainer>
-              {itens.length ? (
+              {hasItens ? (
                 <div>
                   {itens.map((item) => (
                     <CoffeeItem item={item} key={item.id} />
@@ -198,11 +209,11 @@ export function Checkout() {
                 </div>
                 <div>
                   <span>Entrega</span>
-                  <span className="currency">R$ 3,50</span>
+                  <span className="currency">{currencyOfDelivery.format}</span>
                 </div>
                 <div className="total">
                   <span>Total</span>
-                  <span>R$ 33,20</span>
+                  <span>{currencyOfTotalOrder}</span>
                 </div>
               </ResumeContent>
               <SubmitOrder>confirmar pedido</SubmitOrder>
