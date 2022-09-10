@@ -1,14 +1,24 @@
 import { InputHTMLAttributes, ReactNode } from 'react'
+import { Path, FieldValues, useFormContext } from 'react-hook-form'
+
 import { RadioContainer, RadioContent } from './styles'
 
-interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+interface RadioProps<Form> extends InputHTMLAttributes<HTMLInputElement> {
   children: ReactNode
+  formName: Path<Form>
 }
 
-export function Radio({ children, id, ...props }: RadioProps) {
+export function Radio<Form extends FieldValues>({
+  children,
+  id,
+  formName,
+  ...props
+}: RadioProps<Form>) {
+  const { register } = useFormContext<Form>()
+
   return (
     <RadioContainer>
-      <input type="radio" id={id} {...props} />
+      <input type="radio" id={id} {...props} {...register(formName)} />
       <RadioContent htmlFor={id}>{children}</RadioContent>
     </RadioContainer>
   )

@@ -27,6 +27,17 @@ export function cartReducer(state: Item[], action: any) {
         }
       })
 
+    case ActionTypes.REMOVE_ITEM:
+      return produce(state, (draft) => {
+        const itemIndex = draft.findIndex(
+          (item) => item.id === action.payload.item.id,
+        )
+
+        if (!(itemIndex < 0)) {
+          draft.splice(itemIndex, 1)
+        }
+      })
+
     default:
       return state
   }

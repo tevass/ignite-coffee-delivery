@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckoutContainer = styled.main`
+export const CheckoutContainer = styled.form`
   display: grid;
   grid-template-columns: 8fr 5fr;
   column-gap: 2rem;
@@ -60,6 +60,11 @@ export const WrapperHeaderContent = styled.div`
 export const InputGroup = styled.div`
   display: flex;
   gap: 0.75rem;
+`
+
+export const NoItensLabel = styled.div`
+  text-align: center;
+  padding: 1rem 1rem 2rem;
 `
 
 export const ResumeContainer = styled.div`

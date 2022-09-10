@@ -32,13 +32,9 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
   const [amount, setAmount] = useState(1)
   const { addNewItem, itens } = useCart()
 
-  const handleIncrement = () => {
-    if (amount < 3) setAmount((prev) => prev + 1)
-  }
+  const handleIncrement = () => setAmount((prev) => prev + 1)
 
-  const handleDecrement = () => {
-    if (amount > 1) setAmount((prev) => prev - 1)
-  }
+  const handleDecrement = () => setAmount((prev) => prev - 1)
 
   const handleAddInCart = () => addNewItem({ ...coffee, amount })
 
@@ -75,6 +71,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
               disabled={coffeeIsOnCart}
+              limit={5}
             />
             <CoffeeCartButton
               onClick={handleAddInCart}

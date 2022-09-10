@@ -3,6 +3,7 @@ import { Item } from './reducer'
 export enum ActionTypes {
   ADD_NEW_ITEM = 'ADD_NEW_ITEM',
   CHANGE_AMOUNT_ITEM = 'CHANGE_AMOUNT_ITEM',
+  REMOVE_ITEM = 'REMOVE_ITEM',
 }
 
 export function addNewItemAction(newItem: Item) {
@@ -20,6 +21,15 @@ export function changeAmountItemAction(item: Item, newAmount: number) {
     payload: {
       item,
       newAmount,
+    },
+  }
+}
+
+export function removeItemAction(item: Item) {
+  return {
+    type: ActionTypes.REMOVE_ITEM,
+    payload: {
+      item,
     },
   }
 }

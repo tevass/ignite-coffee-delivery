@@ -26,8 +26,12 @@ export const Button = styled.button`
   color: ${(props) => props.theme.colors.brand.purple.normal};
   cursor: pointer;
 
-  &:hover {
+  &:not(:disabled):hover {
     color: ${(props) => props.theme.colors.brand.purple.dark};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 
   > span {

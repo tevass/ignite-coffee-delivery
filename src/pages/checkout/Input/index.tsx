@@ -1,14 +1,23 @@
 import { InputHTMLAttributes } from 'react'
+import { useFormContext, FieldValues, Path } from 'react-hook-form'
+
 import { InputContainer, OptionalLabel } from './styles'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps<Form> extends InputHTMLAttributes<HTMLInputElement> {
   isOptional?: boolean
+  formName: Path<Form>
 }
 
-export function Input({ isOptional, ...props }: InputProps) {
+export function Input<Form extends FieldValues>({
+  isOptional,
+  formName,
+  ...props
+}: InputProps<Form>) {
+  const { register } = useFormContext<Form>()
+
   return (
     <InputContainer>
-      <input {...props} />
+      <input {...props} {...register(formName)} />
       {isOptional && <OptionalLabel>Opcional</OptionalLabel>}
     </InputContainer>
   )
